@@ -17,7 +17,7 @@ function [ thirdOctaveFilterBank, centralFrequencies ] = thirdoctavefilters( var
         var = locVars(idx);
         loc =  find( cellfun(@(v) ( isstring(v) || ischar(v) ) && strcmpi( var, v ), varargin ) );
         if ~isempty(loc) && ~ismember(loc, vkindex) && (loc <= nargin-1) 
-            eval( fprintf( "%s = varargin{loc+1};", var ) );
+            eval( sprintf( "%s = varargin{loc+1};", var ) );
             vkindex = [vkindex loc loc+1];
         end
     end
