@@ -1,8 +1,8 @@
 function [ thirdOctaveFilterBank, centralFrequencies ] = thirdoctavefilters()
-    % Esta funcion devuelve un banco de filtros de tercio de octava
-    % segun norma ANSI S1.11-2004
+    % This function returns a bank of third octave filters according to 
+    % ANSI S1.11-2004
 
-    %Diseñamos un filtro de banda de tercio de octava
+    % Third octave band filter design
 
     bandsPerOctave = 3;
     filterOrder = 6;
@@ -16,12 +16,12 @@ function [ thirdOctaveFilterBank, centralFrequencies ] = thirdoctavefilters()
     centralFrequencies = validfrequencies(thirdOctaveFilter);
     numCentralFrequencies = length(centralFrequencies);
 
-    for i=1:numCentralFrequencies,
+    for i=1:numCentralFrequencies
         thirdOctaveFilter.F0 = centralFrequencies(i);
         thirdOctaveFilterBank(i) = design(thirdOctaveFilter,'butter');
     end
 
-    % Visualizamos los filtros
+    % filter visualization
 
     %fvtool(thirdOctaveFilterBank(17),'FrequencyScale','log','Color','white');
     %axis([0.1 24 -90 5])
