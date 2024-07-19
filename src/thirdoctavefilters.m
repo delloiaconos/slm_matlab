@@ -27,7 +27,7 @@ function [ thirdOctaveFilterBank, centralFrequencies ] = thirdoctavefilters( var
     thirdOctaveFilter = fdesign.octave(bandsPerOctave, 'Class 0', 'N,F0', ...
         filterOrder, centralF, fs);
 
-    % Obtenemos las frecuencias centrales en el rango audible
+    % Central Frequencies calculations
 
     centralFrequencies = validfrequencies(thirdOctaveFilter);
     numCentralFrequencies = length(centralFrequencies);
@@ -36,12 +36,6 @@ function [ thirdOctaveFilterBank, centralFrequencies ] = thirdoctavefilters( var
         thirdOctaveFilter.F0 = centralFrequencies(i);
         thirdOctaveFilterBank(i) = design(thirdOctaveFilter,'butter');
     end
-
-    % filter visualization
-
-    %fvtool(thirdOctaveFilterBank(17),'FrequencyScale','log','Color','white');
-    %axis([0.1 24 -90 5])
-    %title('1/3 octave filter')
 
 end
 
